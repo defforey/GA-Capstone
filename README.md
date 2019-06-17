@@ -10,4 +10,30 @@ The findings of this project may have interesting business outcomes for publishe
 
 ### Repository Contents
     
-### Required Dependancies
+### Necessary packages
+```
+re
+numpy
+pandas
+matplotlib
+seaborn
+sklearn
+json
+time
+requests
+contextlib 
+bs4 
+tqdm 
+csv
+datetime
+Betterreads
+nltk
+textacy
+spacy
+langdetect 
+wordcloud
+PIL 
+gensim
+pyLDAvis   
+vaderSentiment
+```
