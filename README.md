@@ -26,7 +26,7 @@ In this notebook, I use the ISBNs collected from the LibraryThing website to col
 [Notebook 04: Data Cleaning and EDA](https://nbviewer.jupyter.org/github/defforey/GA-Capstone/blob/master/04.%20Data%20cleaning%20and%20EDA.ipynb)
 This notebook combines the datasets from the three previous notebooks into one, cleans the data and contains preliminary visualisations.
 
-[Notebook 05: Modelling and Analysis](https://github.com/defforey/GA-Capstone/blob/master/05.%20Modelling%20and%20analysis.ipynb)
+[Notebook 05: Modelling and Analysis](https://nbviewer.jupyter.org/github/defforey/GA-Capstone/blob/master/05.%20Modelling%20and%20analysis.ipynb)
 The final notebook tests the performance of 10 different LDA models to extract topics from processed book reviews, then uses the best performing model to make topic predictions. It also includes sentiment analysis (polarity). An overall summary of the findings is included at the beginning of the notebook.
 
 <a href="Book reviews data dictionary">Data Dictionary</a>
