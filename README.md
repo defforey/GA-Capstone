@@ -35,29 +35,23 @@ A document providing additional information on the characteristics of the final 
 <a href="Resources/Project Presentation Slides.pdf">Final Presentation Slides</a>
 Final presentation of the project, involving its overall goal, the approach used, key findings, limitations and future work.
 
-### Necessary packages
+### Package Requirements
 ```
-re
-numpy
-pandas
-matplotlib
-seaborn
-sklearn
-json
-time
-requests
-contextlib 
-bs4 
-tqdm 
-csv
-datetime
-Betterreads
-nltk
-textacy
-spacy
-langdetect 
-wordcloud
-gensim
-pyLDAvis   
-vaderSentiment
+numpy = 1.16.2
+pandas = 0.24.2 
+matplotlib = 3.0.3
+seaborn = 0.9.0 
+sklearn = 0.20.3
+requests = 2.21.0
+beautifulsoup4 = 4.7.1
+tqdm = 4.31.1
+betterreads = 0.4.2
+nltk = 3.4
+textacy = 0.7.0
+spacy = 2.1.4
+langdetect = 1.0.7
+wordcloud = 1.5.0
+gensim = 3.7.3
+pyLDAvis = 2.1.2   
+vadersentiment = 3.2.1
 ```
