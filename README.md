@@ -1,4 +1,4 @@
-# <img width="40" src="/Resources/book_stack.jpeg"> Using text reviews to guide book marketing strategies 
+# <img width="40" src="/resources/book_stack.jpeg"> Using text reviews to guide book marketing strategies 
 ## Capstone Project for DSI at General Assembly
 
 This repository contains notebooks and associated files for my capstone project completed during the Data Science Immersive course at General Assembly (London, UK).
