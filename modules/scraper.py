@@ -20,10 +20,12 @@ def check_response_is_valid(resp: requests.models.Response) -> bool:
         content type of the response if HTML/XML or
         otherwise.
     """
-    content_type = resp.headers['Content-Type'].lower()
-    return (resp.status_code == 200
-            and content_type is not None
-            and content_type.find('html') > -1)
+    content_type = resp.headers["Content-Type"].lower()
+    return (
+        resp.status_code == 200
+        and content_type is not None
+        and content_type.find("html") > -1
+    )
 
 
 def simple_get(url: str) -> Union[str, None]:
@@ -46,5 +48,5 @@ def simple_get(url: str) -> Union[str, None]:
                 return None
 
     except RequestException as e:
-        print('Error during requests to {0} : {1}'.format(url, str(e)))
+        print("Error during requests to {0} : {1}".format(url, str(e)))
         return None
