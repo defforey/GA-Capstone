@@ -11,9 +11,16 @@ gc = client.GoodreadsClient(
 
 
 def acquire_goodreads_id(isbn_numbers: List[str]) -> List[int]:
-    """
-    Collects Goodreads IDs using ISBNs and the Goodreads API. A 1 second delay
+    """Collect Goodreads IDs using ISBNs and the Goodreads API. A 1 second delay
     is included in the function to avoid getting my IP address blocked.
+
+    Args:
+        isbn_numbers (List[str]): list of ISBNs for which we want to collect
+            goodreads IDs.
+
+    Returns:
+        A list of goodreads IDs
+
     """
     goodreads_id = []
     for number in tqdm_notebook(isbn_numbers):
@@ -28,6 +35,15 @@ def acquire_goodreads_id(isbn_numbers: List[str]) -> List[int]:
 
 
 def get_book_titles(book_id: List[int]) -> List[str]:
+    """ Use Goodreads Python connector to collect book titles
+    corresponding to goodreads IDs.
+
+    Args:
+        book_id (List[int]): a list of goodreads book IDs
+
+    Returns
+        A list of book titles
+    """
     book_titles = []
     for number in tqdm_notebook(book_id):
         book_titles.append((gc.book(number)).title)
@@ -36,6 +52,15 @@ def get_book_titles(book_id: List[int]) -> List[str]:
 
 
 def get_book_shelves(book_id: List[int]) -> List[str]:
+    """ Use Goodreads Python connector to collect goodreads book shelves
+    corresponding to goodreads IDs.
+
+    Args:
+        book_id (List[int]): a list of goodreads book IDs
+
+    Returns
+        A list of goodreads book shelves
+    """
     book_shelves = []
     for number in tqdm_notebook(book_id):
         book_shelves.append((gc.book(number)).popular_shelves)
