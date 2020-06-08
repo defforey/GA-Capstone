@@ -55,7 +55,7 @@ def load_dataset(path: str) -> pd.DataFrame:
         return pd.DataFrame(data)
 
 
-def format_dataframe(df: pd.DataFrame, column1, column2) -> pd.DataFrame:
+def format_dataframe(df: pd.DataFrame, column1: str, column2: str) -> pd.DataFrame:
     """ Remove unnecessary columns, rename some columns
 
     Args:
@@ -66,6 +66,6 @@ def format_dataframe(df: pd.DataFrame, column1, column2) -> pd.DataFrame:
     """
     column1 = df.pop(column1)
     column2 = df.pop(column2)
-    return df.rename(columns={"comment": "reviews",
-                              "nhelpful": "n_helpful",
-                              "work": "id"})
+    return df.rename(
+        columns={"comment": "reviews", "nhelpful": "n_helpful", "work": "id"}
+    )
