@@ -27,7 +27,7 @@ def acquire_goodreads_id(isbn_numbers: List[str]) -> List[int]:
     goodreads_id = []
     for number in tqdm_notebook(isbn_numbers):
         base_url = "https://www.goodreads.com/book/isbn_to_id"
-        params = {"key": "DOIHCwqd9wgM2dVm6827Og", "isbn": number}
+        params = {"key": goodreads_api_key, "isbn": number}
 
         req_ = get(base_url, params=params)
         json_ = req_.json()
