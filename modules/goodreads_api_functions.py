@@ -1,3 +1,4 @@
+import os
 import time
 from typing import List
 
@@ -5,9 +6,10 @@ from betterreads import client
 from requests import get
 from tqdm import tqdm_notebook
 
-gc = client.GoodreadsClient(
-    "DOIHCwqd9wgM2dVm6827Og", "tWeUy3YeVrZ3a8E6rXjYLc3RvVhrM5zzHUNIdNMJBA"
-)
+goodreads_api_key = os.environ.get("GOODREADS_API_KEY")
+goodreads_api_secret = os.environ.get("GOODREADS_API_SECRET")
+
+gc = client.GoodreadsClient(goodreads_api_key, goodreads_api_secret)
 
 
 def acquire_goodreads_id(isbn_numbers: List[str]) -> List[int]:
