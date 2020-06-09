@@ -1,9 +1,7 @@
 import matplotlib.pyplot as plt
-import nltk
 import pandas as pd
 import seaborn as sns
 import spacy
-import textacy
 from langdetect import DetectorFactory, detect
 from nltk import FreqDist
 from nltk.corpus import stopwords
@@ -13,7 +11,6 @@ nlp = spacy.load('en', disable=['parser', 'ner'])
 stop_words = stopwords.words('english')
 
 DetectorFactory.seed = 42
-
 
 def create_final_dataset(
     df1: pd.DataFrame, df2: pd.DataFrame, df3: pd.DataFrame
