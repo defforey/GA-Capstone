@@ -7,10 +7,11 @@ from nltk import FreqDist
 from nltk.corpus import stopwords
 from wordcloud import STOPWORDS, WordCloud
 
-nlp = spacy.load('en', disable=['parser', 'ner'])
-stop_words = stopwords.words('english')
+nlp = spacy.load("en", disable=["parser", "ner"])
+stop_words = stopwords.words("english")
 
 DetectorFactory.seed = 42
+
 
 def create_final_dataset(
     df1: pd.DataFrame, df2: pd.DataFrame, df3: pd.DataFrame
@@ -90,31 +91,76 @@ def generate_wordcloud(df: pd.DataFrame, book_genre: str) -> None:
         book_genre (str): book genre reviews correspond to
     """
     stopwords = set(STOPWORDS)
-    stopwords.update(['one', 'much', 'still', 'novel', 'book', 'even', 'though', 'really', 'now', 'come', 
-                      'work', 'thing', 'way', 'rather', 'made', 'will', 'bit', 'left', 'make', 'read',
-                      'think', 'book', 'find', 'know', 'lot', 'found', 'another', 'page', 'first', 'part', 'take', 
-                      'thing', 'many', 'give', 'make', 'quite', 'although', 'see', 'yet'])
+    stopwords.update(
+        [
+            "one",
+            "much",
+            "still",
+            "novel",
+            "book",
+            "even",
+            "though",
+            "really",
+            "now",
+            "come",
+            "work",
+            "thing",
+            "way",
+            "rather",
+            "made",
+            "will",
+            "bit",
+            "left",
+            "make",
+            "read",
+            "think",
+            "book",
+            "find",
+            "know",
+            "lot",
+            "found",
+            "another",
+            "page",
+            "first",
+            "part",
+            "take",
+            "thing",
+            "many",
+            "give",
+            "make",
+            "quite",
+            "although",
+            "see",
+            "yet",
+        ]
+    )
     text = " ".join(review for review in df.reviews[df.book_genres == book_genre])
 
-    wordcloud = WordCloud(stopwords=stopwords, background_color='white', width=800, height=400, max_words=100).generate(text)
-    plt.imshow(wordcloud, interpolation='bilinear')
+    wordcloud = WordCloud(
+        stopwords=stopwords,
+        background_color="white",
+        width=800,
+        height=400,
+        max_words=100,
+    ).generate(text)
+    plt.imshow(wordcloud, interpolation="bilinear")
     plt.title(book_genre)
-    plt.axis('off')
+    plt.axis("off")
     return None
 
 
-def generate_word_counts_fig(x, terms = 30):
-    all_words = ' '.join([text for text in x])
+def generate_word_counts_fig(x, terms=30):
+    all_words = " ".join([text for text in x])
     all_words = all_words.split()
 
     fdist = FreqDist(all_words)
-    words_df = pd.DataFrame({'word':list(fdist.keys()), 'count':list(fdist.values())})
+    words_df = pd.DataFrame({"word": list(fdist.keys()), "count": list(fdist.values())})
 
     # selecting top 20 most frequent words
-    d = words_df.nlargest(columns="count", n = terms) 
-    plt.figure(figsize=(20,5))
-    ax = sns.barplot(data=d, x= "word", y = "count")
-    ax.set(ylabel='Count')
+    d = words_df.nlargest(columns="count", n=terms)
+    plt.figure(figsize=(20, 5))
+    ax = sns.barplot(data=d, x="word", y="count")
+    ax.set(ylabel="Count")
 
 
 def remove_stopwords(rev):
@@ -122,7 +168,7 @@ def remove_stopwords(rev):
     return rev_new
 
 
-def lemmatize_text(texts, tags=['NOUN', 'ADJ']):
+def lemmatize_text(texts, tags=["NOUN", "ADJ"]):
     output = []
     for sent in texts:
         doc = nlp(" ".join(sent))
@@ -131,9 +177,9 @@ def lemmatize_text(texts, tags=['NOUN', 'ADJ']):
 
 
 def plot_word_frequency(reviews):
-    reviews = reviews.str.replace("n\'t", " not")
+    reviews = reviews.str.replace("n't", " not")
     reviews = reviews.str.replace("[^a-zA-Z#]", " ")
-    reviews = reviews.apply(lambda x: ' '.join([w for w in x.split() if len(w) > 2]))
+    reviews = reviews.apply(lambda x: " ".join([w for w in x.split() if len(w) > 2]))
     reviews = [remove_stopwords(r.split()) for r in reviews]
     reviews = [r.lower() for r in reviews]
 
@@ -141,7 +187,7 @@ def plot_word_frequency(reviews):
     lemma_reviews = lemmatize_text(tokenized_reviews)
     clean_reviews = []
     for i in range(len(lemma_reviews)):
-        clean_reviews.append(' '.join(lemma_reviews[i]))
+        clean_reviews.append(" ".join(lemma_reviews[i]))
 
     clean_series = pd.Series(clean_reviews)
     return generate_word_counts_fig(clean_series)
