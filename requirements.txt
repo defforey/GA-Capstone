@@ -10,7 +10,7 @@ betterreads==0.4.2
 nltk==3.4.5
 textacy==0.7.0
 spacy==2.1.4
-langdetect==1.0.7
+langdetect==1.0.8
 wordcloud==1.5.0
 gensim==3.7.3
 pyLDAvis==2.1.2   
